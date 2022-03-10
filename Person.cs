@@ -4,38 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _28._02._22
+namespace DanyaCSharp
 {
-    internal class Person
+   internal class Person
     {
-       
-        public int GetAge(DateTime birthDate)
+        public int _age;
+        public DateTime _birthDate;
+        public int Age
         {
-            var now = DateTime.Today;
-            string err = string.Empty;
-            int age;
-            if (birthDate.Year < now.Year)
+            get
             {
-                age = now.Year - birthDate.Year;
-                //if (birthDate.Day == now.Day & birthDate.Month >= now.Month)
-                //{
-                //return age;
-                //}
-                if (birthDate.Month > now.Month & birthDate.Day < now.Day) 
+                _age = DateTime.Now.Year - _birthDate.Year;
+                if (DateTime.Now.Month < _birthDate.Month
+                    || (DateTime.Now.Month == _birthDate.Month && DateTime.Now.Day < _birthDate.Day))
                 {
-                    age--;
-
+                    _age--;
                 }
-
+                return _age;
             }
-
-            else
-            {
-                err = "Error";
-                age = 0;
-                Console.WriteLine(err);
-            }
-            return age;
         }
     }
+}
+                                    /* Вызов метода
+                                      using DanyaCSharp;
+
+                                    var Roman = new Person();
+                                    {
+                                        Roman._birthDate = new DateTime(1998, 08, 11);
+                                        var _date = new DateTime(1998, 08, 11);
+                                        Console.WriteLine("Rome " + Roman.Age);
+                                    }
+                                     */
 }
